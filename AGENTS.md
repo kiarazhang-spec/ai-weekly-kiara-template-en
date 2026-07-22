@@ -106,8 +106,8 @@ Fixed template. Do not reorder or rename sections.
    - Numbered title (`01.` through `05.`)
    - Meta-line with source links
    - One paragraph of factual context
-   - "**Angle:**" callout with the product / market / research interpretation
-4. **🔍 Three themes** — three thematic write-ups tying together multiple stories, each with a "**Take:**" callout
+   - "**Read:**" callout with the product / market / research interpretation (previously labeled "Angle")
+4. **🔍 Three patterns** — three thematic write-ups tying together multiple stories, each with a "**Pattern:**" callout (previously labeled "Take")
 5. **📰 Also worth a look** — four sub-buckets:
    - 🧠 Models & research
    - 🛠️ Products & tooling
@@ -120,8 +120,8 @@ Fixed template. Do not reorder or rename sections.
 ## Word budget
 
 - **Total issue length:** 1,500–2,200 English words. English needs more room than Chinese; do not compress below 1,500.
-- **Top 5 items:** 60–120 words of factual context each, plus 40–70 words of angle commentary.
-- **Themes:** 120–200 words each, plus 40–70 words of take commentary.
+- **Top 5 items:** 60–120 words of factual context each, plus 40–70 words of Read commentary.
+- **Patterns:** 120–200 words each, plus 40–70 words of Pattern commentary.
 - **Also worth a look bullets:** 20–40 words each.
 
 ## Voice specifics (English edition)
