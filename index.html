@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kiara Weekly · The AI Signal Sheet</title>
+<meta name="description" content="A weekly synthesis of the AI industry — model launches, product moves, capital, and infra — written from Silicon Valley for people who make product, marketing, and capital decisions.">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  /* Homepage-specific: minimal archive index */
+  .site-nav {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    padding: 8px 0 24px;
+    font-size: var(--fs-small);
+  }
+  .site-nav a {
+    color: var(--text-soft);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .site-nav a:hover {
+    color: var(--green);
+    border-bottom-color: var(--green);
+  }
+
+  .archive-header {
+    margin: 24px 0 8px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+  .archive-header-label {
+    color: var(--text-faint);
+    font-size: var(--fs-small);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .archive-header-count {
+    color: var(--text-faint);
+    font-size: var(--fs-small);
+    float: right;
+  }
+
+  .toc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .toc-list li {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .toc-list li:last-child { border-bottom: none; }
+  .toc-link {
+    display: block;
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: none;
+  }
+  .toc-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    margin-bottom: 6px;
+    font-size: var(--fs-small);
+    color: var(--text-faint);
+  }
+  .toc-meta .toc-week {
+    color: var(--green);
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .toc-meta .toc-date {
+    font-variant-numeric: tabular-nums;
+  }
+  .toc-summary {
+    color: var(--text-soft);
+    font-size: 15px;
+    line-height: 1.75;
+    transition: color 0.15s;
+  }
+  .toc-link:hover .toc-summary {
+    color: var(--text);
+  }
+  .toc-link:hover .toc-week {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .toc-empty {
+    color: var(--text-faint);
+    font-size: var(--fs-small);
+    padding: 24px 0;
+    text-align: center;
+  }
+  @media (max-width: 640px) {
+    .toc-meta { flex-wrap: wrap; gap: 8px; }
+    .archive-header-count { float: none; display: block; margin-top: 4px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <nav class="site-nav">
+    <a href="about.html">About</a>
+    <a href="https://github.com/kiarazhang-spec/kiara-weekly-ai-en" target="_blank" rel="noopener">GitHub</a>
+  </nav>
+
+  <header class="masthead">
+    <div class="masthead-kicker">AI WEEKLY · SILICON VALLEY</div>
+    <h1 class="masthead-title">Kiara Weekly · The AI Signal Sheet</h1>
+    <div class="masthead-meta">
+      A weekly filter through <strong>200+ AI industry stories</strong>, ranked by <strong>S / A / B source tier</strong>, each with a <strong>product-and-market angle</strong> and a <strong>weekly take</strong>. Published Mondays, 8am Pacific.
+    </div>
+  </header>
+
+  <div class="archive-header">
+    <span class="archive-header-label">Archive</span>
+    <span class="archive-header-count" id="toc-count"></span>
+  </div>
+  <ul class="toc-list" id="toc-list">
+    <li class="toc-empty">Loading…</li>
+  </ul>
+
+  <footer class="footer">
+    Kiara Weekly · <a href="about.html" style="color:inherit;">About</a> · <a href="https://github.com/kiarazhang-spec/kiara-weekly-ai-en" target="_blank" rel="noopener" style="color:inherit;">GitHub</a>
+  </footer>
+
+</div>
+
+<script>
+/**
+ * Archive homepage: reads manifest.json, renders reverse-chronological one-line rows.
+ * Row = period label · date range · one-sentence summary.
+ */
+(async function () {
+  const tocEl = document.getElementById('toc-list');
+  const countEl = document.getElementById('toc-count');
+
+  try {
+    const res = await fetch('posts/manifest.json?t=' + Date.now());
+    if (!res.ok) throw new Error('manifest fetch failed: ' + res.status);
+    const data = await res.json();
+
+    let posts = (data.posts || []).slice();
+    if (posts.length === 0) {
+      tocEl.innerHTML = '<li class="toc-empty">No issues published yet — check back soon.</li>';
+      return;
+    }
+
+    posts.sort((a, b) => {
+      const da = String(a.date_start || a.slug || '');
+      const db = String(b.date_start || b.slug || '');
+      return db.localeCompare(da);
+    });
+
+    if (countEl) countEl.textContent = `${posts.length} issue${posts.length === 1 ? '' : 's'}`;
+
+    tocEl.innerHTML = posts.map(renderRow).join('');
+  } catch (err) {
+    tocEl.innerHTML = '<li class="toc-empty">Failed to load archive: ' + escapeHtml(err.message) + '</li>';
+    console.error(err);
+  }
+
+  function renderRow(p) {
+    const cleanSummary = String(p.summary || '').trim()
+      .replace(/^(This week|In brief|Weekly lead|Lead|Summary)\s*[:—-]\s*/i, '');
+    const summaryHtml = cleanSummary
+      ? `<div class="toc-summary">${escapeHtml(cleanSummary)}</div>`
+      : `<div class="toc-summary" style="color:var(--text-faint);">Summary pending.</div>`;
+
+    return `
+      <li>
+        <a class="toc-link" href="${escapeAttr(p.file)}">
+          <div class="toc-meta">
+            <span class="toc-week">${escapeHtml(p.period_label || p.slug)}</span>
+            <span class="toc-date">${escapeHtml(p.date_start)} — ${escapeHtml(p.date_end)}</span>
+          </div>
+          ${summaryHtml}
+        </a>
+      </li>
+    `;
+  }
+
+  function escapeHtml(s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+  function escapeAttr(s) {
+    return escapeHtml(s);
+  }
+})();
+</script>
+
+</body>
+</html>

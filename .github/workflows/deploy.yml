@@ -1,0 +1,148 @@
+name: Auto Update Manifest & Deploy Pages
+
+# Triggers:
+#   1. Push to main
+#   2. Manual (Actions tab → Run workflow)
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Permissions: write repo (for manifest commit) + deploy Pages
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+# Prevent concurrent deploys
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Scan posts/*.html and auto-generate or update manifest.json.
+      # Naming convention: YYYY-MM-DD.html where YYYY-MM-DD is the Monday
+      # (Pacific Time) of the covered week.
+      # - Extracts title from <title>
+      # - Extracts summary from the first .lead block (first 160 chars)
+      # - Preserves human-edited fields (title, period_label, summary) if present
+      - name: Auto-build manifest.json
+        run: |
+          node <<'EOF'
+          const fs = require('fs');
+          const path = require('path');
+
+          const POSTS_DIR = 'posts';
+          const MANIFEST_PATH = path.join(POSTS_DIR, 'manifest.json');
+
+          // Read existing manifest (preserve hand-edited fields)
+          let existing = { site: {}, posts: [] };
+          if (fs.existsSync(MANIFEST_PATH)) {
+            try { existing = JSON.parse(fs.readFileSync(MANIFEST_PATH, 'utf8')); }
+            catch (e) { console.warn('manifest.json parse failed, will rebuild'); }
+          }
+          const existingMap = new Map((existing.posts || []).map(p => [p.file, p]));
+
+          // Scan posts/ for filenames like 2026-05-18.html
+          const files = fs.readdirSync(POSTS_DIR)
+            .filter(f => /^\d{4}-\d{2}-\d{2}\.html$/.test(f))
+            .sort()
+            .reverse();
+
+          const posts = files.map(filename => {
+            const fileRel = `${POSTS_DIR}/${filename}`;
+            const slug = filename.replace(/\.html$/, '');
+
+            // Existing record: reuse
+            const cached = existingMap.get(fileRel);
+            if (cached) return cached;
+
+            // New file: auto-extract
+            const html = fs.readFileSync(fileRel, 'utf8');
+            const titleMatch = html.match(/<title>([^<]+)<\/title>/);
+            const leadMatch = html.match(/<div class="lead"[^>]*>([\s\S]+?)<\/div>/);
+
+            const title = titleMatch
+              ? titleMatch[1].split('·')[0].trim() + ' · ' + (titleMatch[1].split('·')[1] || '').trim()
+              : `AI Weekly ${slug}`;
+
+            let summary = '';
+            if (leadMatch) {
+              summary = leadMatch[1]
+                .replace(/<[^>]+>/g, '')
+                .replace(/\s+/g, ' ')
+                .replace(/^(This week|In brief|Weekly lead|Lead)[:\-—]\s*/i, '')
+                .trim()
+                .slice(0, 220);
+            }
+
+            // Monday date = slug; Sunday = +6 days
+            const start = new Date(slug + 'T00:00:00Z');
+            const end = new Date(start.getTime() + 6 * 24 * 3600 * 1000);
+            const fmt = d => d.toISOString().slice(0, 10);
+
+            return {
+              slug,
+              file: fileRel,
+              title,
+              period_label: '',
+              date_start: fmt(start),
+              date_end: fmt(end),
+              summary,
+            };
+          });
+
+          const out = {
+            site: existing.site || {
+              title: 'Kiara Weekly · The AI Signal Sheet',
+              subtitle: 'Published Mondays, 8am Pacific',
+            },
+            posts,
+          };
+          fs.writeFileSync(MANIFEST_PATH, JSON.stringify(out, null, 2) + '\n');
+          console.log(`manifest.json updated, ${posts.length} posts`);
+          EOF
+
+      - name: Commit manifest if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet posts/manifest.json; then
+            git add posts/manifest.json
+            git commit -m "chore: auto-update manifest.json [skip ci]"
+            git push
+          else
+            echo "No manifest changes"
+          fi
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
