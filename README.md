@@ -41,23 +41,56 @@ If you want a lighter starting point without the editorial opinions, skip this a
 
 ---
 
-## Fork and customize (5 steps)
+## Fork and customize
+
+### Step 1 — Create your copy
+
+Click **"Use this template"** on GitHub (top-right, green button), or clone directly:
 
 ```bash
-# 1. Click "Use this template" on GitHub, or clone directly
 git clone https://github.com/kiarazhang-spec/ai-weekly-kiara-template-en.git my-ai-weekly
 cd my-ai-weekly
-
-# 2. Search-and-replace Kiara's name / handles / URLs
-#    Files to touch: index.html, about.html, README.md, posts/2026-07-06.html footer
-#    Search for: "Kiara", "kiarazhang-spec", "kiara-weekly"
-
-# 3. Recolor: open assets/style.css, change --green in :root to your accent
-
-# 4. Rewrite the masthead on index.html and the About page in your own voice
-
-# 5. Enable Pages: Settings → Pages → Source: GitHub Actions
 ```
+
+### Step 2 — Run the personalize script
+
+One command rewrites bylines, handles, and self-referencing repo links throughout the template:
+
+```bash
+bash personalize.sh <your-gh-handle> "<Your Full Name>" <your-repo-slug>
+
+# Example:
+bash personalize.sh janedoe "Jane Doe" my-ai-weekly
+```
+
+Review the diff, then commit:
+
+```bash
+git diff                                    # sanity-check
+git commit -am "chore: personalize template"
+rm personalize.sh && git commit -am "chore: remove personalize script"   # optional
+```
+
+### Step 3 — SEO required checklist (do NOT skip)
+
+If you don't do this, Google will see your forked pages as duplicates of Kiara's template. Search weight gets diluted; readers may end up on the original repo instead of yours. **These are required, not optional:**
+
+- [ ] `index.html` — `<title>`, `<meta name="description">`, `<meta property="og:title">`, `<meta property="og:description">`, `<meta property="og:image">`
+- [ ] `about.html` — same 5 tags as above
+- [ ] `posts/2026-07-06.html` — `<title>` and meta tags (or delete this file if you don't want the example issue shipping with your first release)
+- [ ] `posts/manifest.json` — `site.title`, `site.author`, `site.baseUrl`
+- [ ] Replace `og:image` asset (a stock preview card lives in the repo root or `/assets/`) with something branded to you
+- [ ] Update the LICENSE copyright line (the personalize script does this automatically, but confirm)
+
+### Step 4 — Recolor and reword
+
+- Open `assets/style.css`, change `--green` in `:root` to your accent color
+- Rewrite the masthead / lead-paragraph on `index.html` in your own voice
+- Rewrite `about.html` — this is your "who I am and why I do this" page, not Kiara's
+
+### Step 5 — Enable GitHub Pages
+
+Repo → **Settings** → **Pages** → **Source: GitHub Actions**. The first push after this triggers the deploy workflow, and your site goes live at `https://<your-handle>.github.io/<your-repo-slug>/` within ~3 minutes.
 
 Publishing an issue:
 
