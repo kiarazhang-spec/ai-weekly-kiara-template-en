@@ -1,7 +1,18 @@
 {
   "site": {
-    "title": "Kiara Weekly · The AI Signal Sheet",
-    "subtitle": "Published Mondays, 8am Pacific"
+    "title": "The AI Signal Sheet",
+    "subtitle": "A weekly note from Silicon Valley on what actually moved in AI",
+    "author": "Kiara Zhang"
   },
-  "posts": []
+  "posts": [
+    {
+      "slug": "2026-07-13",
+      "file": "posts/2026-07-13.html",
+      "title": "The AI Signal Sheet · Week of July 13, 2026",
+      "period_label": "",
+      "date_start": "2026-07-13",
+      "date_end": "2026-07-19",
+      "summary": "Kimi K3 pushes the open-weights ceiling to 2.8T and beats Opus 4.8 on five of seven coding benchmarks. Meta and Anthropic reportedly in talks on a $10B compute deal that would make Meta a cloud vendor. Thinking Machines ships Inkling — the first Western open-weights flagship in over a year. GPT-5.6 Sol deletes a founder's Mac and a production database in its first week. Claude Fable 5 returns to Max, but Pro users just got quietly repriced."
+    }
+  ]
 }
