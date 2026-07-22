@@ -2,7 +2,7 @@
 
 > A template for running your own weekly AI signal-sheet — analytical, English-native, primary-source first. Comes with one fully worked example issue so you can see how the rules produce a finished post.
 
-**Built by [Kiara Zhang](https://github.com/kiarazhang-spec)** — a PM in Silicon Valley who runs [a Chinese-language AI weekly](https://github.com/kiarazhang-spec/kiara-weekly-ai) and built this English edition as a companion template. The example issue in this repo is a real synthesis of the week of July 6, 2026 — not lorem ipsum.
+**Built by [Kiara Zhang](https://github.com/kiarazhang-spec)** — a PM in Silicon Valley who runs [her own weekly AI signal-sheet](https://github.com/kiarazhang-spec/kiara-weekly-ai) and published this English edition as an open template so others can fork it and skip the plumbing. The example issue in this repo is a real synthesis of the week of July 6, 2026 — not lorem ipsum.
 
 ---
 
