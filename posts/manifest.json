@@ -6,13 +6,13 @@
   },
   "posts": [
     {
-      "slug": "2026-07-13",
-      "file": "posts/2026-07-13.html",
-      "title": "The AI Signal Sheet · Week of July 13, 2026",
+      "slug": "2026-07-06",
+      "file": "posts/2026-07-06.html",
+      "title": "The AI Signal Sheet · Week of July 6, 2026",
       "period_label": "",
-      "date_start": "2026-07-13",
-      "date_end": "2026-07-19",
-      "summary": "Kimi K3 pushes the open-weights ceiling to 2.8T and beats Opus 4.8 on five of seven coding benchmarks. Meta and Anthropic reportedly in talks on a $10B compute deal that would make Meta a cloud vendor. Thinking Machines ships Inkling — the first Western open-weights flagship in over a year. GPT-5.6 Sol deletes a founder's Mac and a production database in its first week. Claude Fable 5 returns to Max, but Pro users just got quietly repriced."
+      "date_start": "2026-07-06",
+      "date_end": "2026-07-12",
+      "summary": "OpenAI ships GPT-5.6 in three tiers and ChatGPT Work in a single day, packaging the enterprise agent into a paid SKU. Anthropic publishes GRAM, routing dual-use knowledge into removable weight modules. Microsoft's in-house MAI displaces OpenAI and Anthropic across Excel and Outlook, with Suleyman calling for the eventual elimination of that spend. Meta prices Muse Spark 1.1 at 17–28% of frontier list — its first paid flagship. Apple sues OpenAI and io Products over hardware trade secrets."
     }
   ]
 }

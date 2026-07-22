@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The AI Signal Sheet · July 6–12, 2026</title>
+<meta name="description" content="Week of July 6, 2026: OpenAI launches GPT-5.6 (Sol / Terra / Luna) and ChatGPT Work in a single day, packaging enterprise agents into a paid SKU. Anthropic publishes GRAM, moving safety from refusal training to removable weight modules. Microsoft's in-house MAI displaces OpenAI and Anthropic across Excel and Outlook. Meta ships Muse Spark 1.1, its first paid flagship, at 17–28% of frontier pricing. Apple sues OpenAI and io Products over hardware trade secrets.">
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  html.embed .masthead { display: none; }
+  html.embed .page { padding: 0; box-shadow: none; margin: 0; max-width: 100%; }
+  html.embed { background: transparent; }
+  html.embed body { background: transparent; }
+  html.embed .post-toplevel { display: none; }
+  html.embed .post-toplevel + .item-title { margin-top: 0; }
+  html.embed .post-about { display: none; }
+</style>
+<script>
+  if (new URLSearchParams(location.search).get('embed') === '1') {
+    document.documentElement.classList.add('embed');
+  }
+</script>
+</head>
+<body>
+
+<div class="page">
+
+  <header class="masthead">
+    <div class="masthead-kicker">ISSUE 01 · WEEK OF JULY 6</div>
+    <h1 class="masthead-title">The AI Signal Sheet</h1>
+    <div class="masthead-meta">
+      July 6 – 12, 2026 (Pacific Time) · <a href="../index.html" style="color:inherit;text-decoration:underline;">← Back to archive</a>
+    </div>
+  </header>
+
+  <div class="lead">This week at a glance: OpenAI released GPT-5.6 in three tiers (Sol / Terra / Luna) alongside ChatGPT Work, packaging the enterprise agent into a single-day product launch with unified pricing and audit tooling; Anthropic published GRAM, a research method that routes dual-use knowledge into removable weight modules, pushing safety from refusal training to structural weight-level control; Bloomberg reported that Microsoft's in-house MAI models have replaced OpenAI and Anthropic on tens of thousands of weekly prompts inside Excel and Outlook, with AI chief Mustafa Suleyman stating publicly that the goal is to "eventually eliminate" outside model spend; Meta priced Muse Spark 1.1 at $1.25 / $4.25 per million tokens — its first paid flagship, ending the free-Llama era at 17–28% of frontier list prices; and Apple filed a 40-page complaint against OpenAI, io Products, and two ex-Apple employees over hardware trade-secret theft, opening the first AI battle line that runs through consumer hardware and supply chains rather than model capability.</div>
+
+  <h2 class="section-title post-toplevel">
+    <span class="icon">🎯</span>
+    <span>Top 5 this week</span>
+  </h2>
+
+  <h3 class="item-title"><span class="num">01.</span>OpenAI ships GPT-5.6 in three tiers and ChatGPT Work on the same day — the enterprise agent becomes a paid SKU</h3>
+  <p class="meta-line"><strong>Sources:</strong> <a href="https://openai.com/index/gpt-5-6" target="_blank" rel="noopener">OpenAI · GPT-5.6 launch (2026-07-09)</a>; <a href="https://openai.com/index/chatgpt-for-your-most-ambitious-work" target="_blank" rel="noopener">OpenAI · ChatGPT Work (2026-07-09)</a></p>
+  <p class="body-block">GPT-5.6 reached general availability on July 9 in three variants — Sol, Terra, Luna — priced at <strong>$5 / $30, $2.50 / $15, and $1 / $6 per million input / output tokens</strong>. Sol becomes the default ChatGPT model and the preferred model inside Microsoft 365 Copilot. ChatGPT Work, launched the same day, is an enterprise agent built on GPT-5.6 plus Codex; it connects to more than 1,400 tools, decomposes multi-step goals across applications, and returns finished artifacts (spreadsheets, decks, websites) with a Plan approval step, audit logs, and a compliance API. Rollout begins with Pro, Enterprise, and Edu; Plus and Business follow. The Codex desktop client folds into a unified ChatGPT app; the standalone Atlas browser is scheduled for August 9 shutdown.</p>
+  <div class="perspective"><span class="label">Read:</span>Two moves compressed into one day. The three-tier pricing plants a low-end anchor (Luna at $1 / $6 sits directly on Claude Sonnet), and ChatGPT Work turns the agent narrative from demo into a line item on an enterprise procurement sheet. The more durable signal is the reframing from "AI writes code" to "AI does work" — Chat, Work, and Codex now sit as three peer entry points, and "AI employee" has an SKU. The direct fight is with Microsoft Copilot Studio and Anthropic's managed-agents track for the same enterprise seat.</div>
+
+  <h3 class="item-title"><span class="num">02.</span>Anthropic publishes GRAM — dual-use knowledge routed into removable modules, safety moves from refusal to weight-level</h3>
+  <p class="meta-line"><strong>Sources:</strong> <a href="https://www.anthropic.com/research/off-switch-dual-use" target="_blank" rel="noopener">Anthropic Research · An off switch for dual-use knowledge (2026-07-08)</a></p>
+  <p class="body-block">Anthropic and AE Studio released GRAM (Gradient-Routed Auxiliary Modules), a training method that adds risk-category-grouped auxiliary modules to every Transformer layer. When sensitive training data appears — virology, cybersecurity, nuclear physics — gradients flow only into the corresponding module while the general weights stay frozen; after training, the module can be excised and the associated capability leaves with it. The paper covers four risk categories across seven model scales from 50M to 5B parameters. Post-removal fine-tuning recovery approaches "never trained on that data," and the on/off effect gap widens as models get larger. Anthropic explicitly notes the method has not been deployed to production models.</p>
+  <div class="perspective"><span class="label">Read:</span>Structural safety is rare. Every prior safety intervention has operated <em>after</em> the model learns something dangerous — refusal training, classifiers, jailbreak defenses. GRAM routes the knowledge itself into a location that can be cut out. For enterprise and government buyers this matters commercially: one training run can spawn multiple weight versions with different capability profiles, without retraining per customer. It also pushes Anthropic's "safety as differentiation" strategy down to a new technical layer — future export-control regimes and biosecurity reviews will likely orient around this kind of structural handle rather than input filters.</div>
+
+  <h3 class="item-title"><span class="num">03.</span>Microsoft's in-house MAI models are quietly displacing OpenAI and Anthropic in Excel and Outlook</h3>
+  <p class="meta-line"><strong>Sources:</strong> <a href="https://www.bloomberg.com/news/articles/2026-07-07/microsoft-mai-models-replace-openai-anthropic-in-excel-outlook" target="_blank" rel="noopener">Bloomberg (2026-07-07)</a>; <a href="https://www.theinformation.com/articles/microsoft-mai-suleyman-anthropic-cost-cuts" target="_blank" rel="noopener">The Information (2026-07-08)</a>. <em>[Paywalled originals; claims referenced via wire summaries and independent corroboration.]</em></p>
+  <p class="body-block">Bloomberg reports that Microsoft has begun swapping OpenAI and Anthropic models out of Excel and Outlook for its in-house MAI family, with <strong>tens of thousands of weekly prompts</strong> now served by MAI — a shift not previously disclosed. Microsoft AI chief Mustafa Suleyman was quoted directly: "We pay Anthropic a lot of money, and our goal is to <strong>reduce and eventually eliminate</strong> that cost." Internal data referenced by Bloomberg puts Microsoft's early-2026 spend with Anthropic at roughly <strong>$500 million per year</strong>. The MAI lineup (seven models unveiled at Build in June) has already reached GitHub Copilot; in-house speech-to-text is slated for Teams within months.</p>
+  <div class="perspective"><span class="label">Read:</span>The 2025 amendment to the Microsoft–OpenAI agreement — which lifted Microsoft's restriction on building its own frontier models — is beginning to compound. The company that anchored its AI strategy to OpenAI is now explicitly targeting the reduction and eventual elimination of that spend. The pricing implication is bigger than the product implication: if a hyperscaler is willing to run in-house models for high-frequency workloads, the long-run ceiling on enterprise per-token pricing has just been drawn. Model-layer margins may have already crossed their peak.</div>
+
+  <h3 class="item-title"><span class="num">04.</span>Meta ships Muse Spark 1.1 — its first paid flagship, priced at 17–28% of frontier list</h3>
+  <p class="meta-line"><strong>Sources:</strong> <a href="https://ai.meta.com/static-resource/muse-spark-1-1-evaluation-report/" target="_blank" rel="noopener">Meta AI · Muse Spark 1.1 Evaluation Report (2026-07-09)</a>; <a href="https://www.bloomberg.com/news/articles/2026-07-09/meta-launches-first-paid-ai-model-muse-spark-1-1" target="_blank" rel="noopener">Bloomberg (2026-07-09)</a></p>
+  <p class="body-block">Meta Superintelligence Labs released Muse Spark 1.1 on July 9, the first Meta flagship model with a paid price tag — a break from the Llama free-and-open era. List price is <strong>$1.25 / $4.25 per million input / output tokens</strong>, approximately <strong>28% of GPT-5.6 Terra output</strong> and <strong>17% of Claude Opus 4.8 output</strong>. Launch was US-only preview with a $20 free credit for new accounts; no third-party distribution (no OpenRouter, no Bedrock) at launch. Technical claims: 1M-token context, native multimodal input (text / image / video / computer use), end-to-end agent and repo-scale coding. Zuckerberg returned to X for the launch, ending a three-year public silence there.</p>
+  <div class="perspective"><span class="label">Read:</span>Meta's pivot effectively closes the "free open-weights frontier" era. Muse Spark 1.1 is the first shipped product of Alexandr Wang's MSL, and its bet is <strong>closed weights + aggressive pricing + high call volume</strong> — not a quality play, a price play. Setting list price at a quarter of OpenAI's is designed to force competitors to cut. Read this alongside the Microsoft MAI story: two independent news items pointing at the same signal — a token price war has started, and marginal margins across the model layer are being structurally compressed.</div>
+
+  <h3 class="item-title"><span class="num">05.</span>Apple sues OpenAI and io Products over hardware trade secrets — the AI battle line moves into consumer hardware</h3>
+  <p class="meta-line"><strong>Sources:</strong> <a href="https://www.bloomberg.com/news/articles/2026-07-10/apple-sues-openai-hardware-trade-secrets-io-products" target="_blank" rel="noopener">Bloomberg (2026-07-10)</a>; <a href="https://techcrunch.com/2026/07/10/apple-lawsuit-openai-io-products-hardware-trade-secrets" target="_blank" rel="noopener">TechCrunch (2026-07-10)</a></p>
+  <p class="body-block">Apple filed a 40-page complaint in the Northern District of California (Case No. 5:26-cv-07078) against OpenAI Foundation, OpenAI Group PBC, io Products, and two ex-Apple employees — including OpenAI's current chief hardware officer Tang Yew Tan (former Apple VP of iPhone / Watch product design) and engineer Chang Liu. The complaint includes an evidentiary chain: Liu is alleged to have downloaded unreleased product files after resignation using an internal authentication gap, with an email reading <strong>"lol I discovered I can access network storage"</strong>. The filing states that <strong>more than 400 former Apple employees have joined OpenAI</strong>, and that Apple sent a letter to OpenAI in February that received no reply. Apple seeks a full injunction, return and destruction of the covered materials, and — unusually — an <strong>order compelling OpenAI to redesign its hardware products</strong> to remove Apple-patented technology. OpenAI's response: "We have no interest in other companies' trade secrets."</p>
+  <div class="perspective"><span class="label">Read:</span>The lawsuit's real weight isn't whether Apple wins — it's the fact that <strong>the AI competitive frontier has extended from the model layer into the consumer hardware supply chain</strong>. Apple and OpenAI were partners as recently as the Siri integration; this filing lands on the eve of OpenAI's IPO window, converting a partnership into a public legal event during a maximally sensitive period. The complaint's language — that OpenAI's hardware business is "rotted at the core by illegal misappropriation" — is unusually pointed. The goal isn't damages; it's to <strong>get a "compliance risk" tag attached to OpenAI's hardware roadmap in front of regulators and investors</strong>. Concurrent reports that Siri may shift to Google Gemini as the underlying model complete the picture — this is a strategic decoupling, not a discovery dispute.</div>
+
+
+  <h2 class="section-title">
+    <span class="icon">🔍</span>
+    <span>Three patterns this week</span>
+  </h2>
+
+  <h3 class="item-title">Pattern one: The enterprise agent moves from "demonstrable" to "procurable"</h3>
+  <p class="body-block">Three vendors converged on the same product surface in the same week. <a href="https://openai.com/index/chatgpt-for-your-most-ambitious-work" target="_blank" rel="noopener">ChatGPT Work</a> ships as a GPT-5.6 + Codex agent with 1,400+ tool connections, artifact delivery (spreadsheets, decks, websites), and admin audit / compliance APIs. GPT-5.6 becomes the <a href="https://openai.com/index/gpt-5-6-preferred-model-microsoft-365-copilot" target="_blank" rel="noopener">preferred model inside Microsoft 365 Copilot</a>, embedding OpenAI directly into the office workflow. Anthropic's managed-agents track added event-delta streams, per-session overrides, and lifecycle webhooks; Claude Code shipped a Manual default permission mode — a more conservative autonomy posture. The common architecture underneath: approval chain, audit log, revocable action.</p>
+  <div class="perspective"><span class="label">Pattern:</span>What separates these products from 2024's agent demos isn't capability — it's the <strong>approve / audit / rollback triangle</strong>. ChatGPT Work's Plan approval, Claude Code's Manual default, Copilot's admin controls: three independently designed systems, one shared baseline for enterprise deployment. For product teams building on top: <strong>compliance is no longer an optional module; it's the default table stakes for enterprise AI</strong>.</div>
+
+  <h3 class="item-title">Pattern two: The token price war has started — two independent paths point at the same margin compression</h3>
+  <p class="body-block">Two unrelated stories in the same week share one economic implication. <a href="https://www.bloomberg.com/news/articles/2026-07-07/microsoft-mai-models-replace-openai-anthropic-in-excel-outlook" target="_blank" rel="noopener">Microsoft's MAI shift</a> is a large buyer refusing to keep paying a premium — Suleyman's "eventually eliminate" line reframes a $500M/year contract as a cost to zero out. <a href="https://ai.meta.com/static-resource/muse-spark-1-1-evaluation-report/" target="_blank" rel="noopener">Meta's Muse Spark 1.1 pricing</a> is a new supplier deliberately setting list at 17–28% of frontier — a wholesale discount to force downstream cuts. OpenAI's own <a href="https://openai.com/index/gpt-5-6" target="_blank" rel="noopener">Luna tier at $1 / $6</a> lands in the same range, explicitly positioned against Sonnet and Meta's new pricing.</p>
+  <div class="perspective"><span class="label">Pattern:</span>Buyer-side refusal (Microsoft) plus supplier-side dumping (Meta) plus incumbent tier-splitting (OpenAI) is a textbook margin-compression setup. Over the next twelve months the more interesting question isn't "which model is best" but <strong>"which lab can sustain a research org at compressed gross margins"</strong>. That's why OpenAI is racing to ship ChatGPT Work and Anthropic is doubling down on managed agents and Claude Code — both are <strong>relocating profit from API unit pricing into application-layer subscriptions and enterprise seat licenses</strong>.</div>
+
+  <h3 class="item-title">Pattern three: The AI battle line extends beyond the model layer — into hardware supply chains and weight structure</h3>
+  <p class="body-block">For three years the AI competitive surface has been model capability. This week it extended in two directions simultaneously. <a href="https://www.bloomberg.com/news/articles/2026-07-10/apple-sues-openai-hardware-trade-secrets-io-products" target="_blank" rel="noopener">Apple v. OpenAI</a> escalates hardware IP into open litigation on the eve of OpenAI's confidential S-1. <a href="https://www.anthropic.com/research/off-switch-dual-use" target="_blank" rel="noopener">Anthropic's GRAM paper</a> shows that a single training run can spawn multiple weight versions with different capability profiles — safety becomes a routable, removable structural property, not a post-hoc filter. Concurrent reports that <a href="https://www.techtimes.com/articles/openai-eyes-hardware-launch-2026-io-siri-gemini" target="_blank" rel="noopener">Siri is exploring a Google Gemini underlying model</a> complete the strategic decoupling picture.</p>
+  <div class="perspective"><span class="label">Pattern:</span>The AI industry is being "assetized, structured, and sovereign-tied" — hardware trade secrets sit adjacent to supply-chain sovereignty; removable weight modules sit adjacent to export-control policy. The next phase of AI regulation and M&amp;A will orient around these two axes, not around a single-model benchmark leaderboard. Watch for antitrust and national-security frames to enter simultaneously.</div>
+
+
+  <h2 class="section-title">
+    <span class="icon">📰</span>
+    <span>Also worth a look</span>
+  </h2>
+
+  <h4 class="subsection-title">🧠 Models &amp; research</h4>
+  <ul class="misc-list">
+    <li><strong>Claude reaches Microsoft Azure AI Foundry:</strong> Anthropic and Microsoft (2026-07-06) — Claude is now available on Azure AI Foundry running on Nvidia GPUs, further widening enterprise distribution (<a href="https://www.claudeainews.com/news/news/models.html" target="_blank" rel="noopener">Anthropic × Microsoft announcement</a>).</li>
+    <li><strong>Anthropic API rate limits consolidated:</strong> Sonnet, Haiku, and Opus rate limits aligned; tiers merged to Start / Build / Scale (<a href="https://www.cadb.info/reports/claude-ai-daily-2026-07-06.html" target="_blank" rel="noopener">Anthropic Console update</a>).</li>
+    <li><strong>OpenAI ships GPT-Live full-duplex voice:</strong> New voice model supports mid-sentence interruption with tighter voice safety rails; back-end can hand off to GPT-5.5 for reasoning and browsing (<a href="https://openai.com/index/introducing-gpt-live" target="_blank" rel="noopener">OpenAI announcement</a>).</li>
+  </ul>
+
+  <h4 class="subsection-title">🛠️ Products &amp; tooling</h4>
+  <ul class="misc-list">
+    <li><strong>ChatGPT desktop unifies Chat / Work / Codex:</strong> The unified client replaces the standalone apps; the prior client is renamed ChatGPT Classic; Atlas browser shuts down August 9 (<a href="https://openai.com/index/chatgpt-for-your-most-ambitious-work" target="_blank" rel="noopener">OpenAI</a>).</li>
+    <li><strong>OpenAI × Deutsche Telekom:</strong> A partnership around European enterprise scenarios and sovereign compute (<a href="https://openai.com/index/deutsche-telekom" target="_blank" rel="noopener">OpenAI announcement</a>).</li>
+    <li><strong>GitHub Copilot adds GPT-5.6 tiers:</strong> The model picker now includes Sol / Terra / Luna; Sol gated to Pro+ and above.</li>
+  </ul>
+
+  <h4 class="subsection-title">💰 Capital &amp; business</h4>
+  <ul class="misc-list">
+    <li><strong>Apple v. OpenAI timing:</strong> The complaint was filed roughly six weeks after OpenAI's confidential S-1 submission, meaning the litigation must be disclosed as a material risk factor in the eventual prospectus (<a href="https://www.bloomberg.com/news/articles/2026-07-10/apple-sues-openai-hardware-trade-secrets-io-products" target="_blank" rel="noopener">Bloomberg</a>).</li>
+    <li><strong>OpenAI publishes government / national-security partnership framework:</strong> Formalizes the earlier informal 5% government equity proposal into a structured engagement pathway (<a href="https://openai.com/index/government-national-security-partnerships" target="_blank" rel="noopener">OpenAI</a>).</li>
+  </ul>
+
+  <h4 class="subsection-title">⚙️ Infra &amp; engineering</h4>
+  <ul class="misc-list">
+    <li><strong>MAI reaches GitHub Copilot:</strong> Microsoft's in-house models are already live in the coding agent; in-house speech-to-text is slated for Teams in the coming months (<a href="https://www.bloomberg.com/news/articles/2026-07-07/microsoft-mai-models-replace-openai-anthropic-in-excel-outlook" target="_blank" rel="noopener">Bloomberg</a>).</li>
+    <li><strong>Muse Spark 1.1 technical envelope:</strong> 1M-token context, native multimodal input, Linux sandbox-level computer use, end-to-end agent behavior at repo scale (<a href="https://ai.meta.com/static-resource/muse-spark-1-1-evaluation-report/" target="_blank" rel="noopener">Meta AI</a>).</li>
+  </ul>
+
+
+  <h2 class="section-title">
+    <span class="icon">⚠️</span>
+    <span>Sources &amp; method</span>
+  </h2>
+
+  <p class="body-block"><strong>Primary and A-tier sources cited:</strong> OpenAI Newsroom (GPT-5.6, ChatGPT Work, GPT-Live), Anthropic Research (GRAM), Meta AI (Muse Spark 1.1 evaluation), Bloomberg (Microsoft MAI, Apple v. OpenAI, Muse Spark 1.1), The Information (Microsoft MAI corroboration), TechCrunch (Apple v. OpenAI), Northern District of California court docket (case 5:26-cv-07078).</p>
+
+  <p class="body-block"><strong>Paywalled sources referenced via wire coverage:</strong> Bloomberg originals were accessed only through open-web wire summaries and independent corroboration (The Information, TechCrunch). Every claim traces to a freely readable secondary source cross-referenced against at least one other outlet.</p>
+
+</div>
+
+</body>
+</html>
