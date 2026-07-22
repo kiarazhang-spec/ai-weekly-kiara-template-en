@@ -20,7 +20,7 @@ This newsletter is written in English **from English primary sources by default*
 
 **Audience:** Silicon Valley PMs, product marketers, investors, and researchers who already read Stratechery, The Information, Latent Space, and Semianalysis. They do not need "what is a transformer" explanations. They do need a synthesized weekly signal filter.
 
-**Voice:** Analytical, direct, product-and-market perspective. Concise. No hype language ("game-changing", "revolutionary", "disruptive"). Use specific numbers ($X billion, Y% growth, Z parameters) only with a verified source. Prefer concrete verbs. First-person "I" is fine when clearly marked as commentary.
+**Voice:** Analytical, direct, product-and-market perspective. Concise. No hype language ("game-changing", "revolutionary", "disruptive"). Use specific numbers ($X billion, Y% growth, Z parameters) only with a verified source. Prefer concrete verbs. **Body copy is third-person and neutral; first-person "I" is scoped to Read / Pattern callouts only** (see Voice specifics for register rules per section).
 
 ## Repository layout
 
@@ -126,6 +126,8 @@ Fixed template. Do not reorder or rename sections.
 
 ## Voice specifics (English edition)
 
+- **The lead paragraph is an aggregator summary, not a punchy editorial opener.** Format: `<div class="lead">This week at a glance: [item 1]; [item 2]; [item 3]; [item 4]; [item 5].</div>` One paragraph, semicolon-separated, dense with facts, no first-person, no "the X moved this week" framing. Register: neutral, third-person, official. Save the sharper voice for the Read / Pattern callouts.
+- **First-person "I" is allowed only inside Read and Pattern callouts** where commentary is clearly the author's opinion. Never in leads, meta-lines, body-block factual paragraphs, or Also-worth-a-look items.
 - **Titles are declarative, not clickbait.** "Anthropic files S-1 with SEC" > "You won't believe what Anthropic just did".
 - **Prefer "the company", "the model", "the deal"** on second reference — avoid restating full names every sentence.
 - **Use en-dashes (–) for ranges, em-dashes (—) for parenthetical clauses.** Do not use hyphens for either.
