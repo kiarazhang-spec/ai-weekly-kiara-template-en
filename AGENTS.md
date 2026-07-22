@@ -135,6 +135,39 @@ Fixed template. Do not reorder or rename sections.
 - **No "In this issue:" preambles.** Get to the lead sentence.
 - **No emoji in prose.** Emoji is section-header decoration only.
 
+## AI-use disclosure protocol
+
+This is a newsletter about AI. Using AI to help produce it is not a scandal — hiding it would be. Every issue must be honest about the split between human judgment and machine assistance. The reader test: *"If they saw exactly how this was made, would they feel misled?"*
+
+**What AI is allowed to do:**
+- Sweep and summarize the weekly source pool (RSS, official blogs, press releases, arXiv, filings)
+- Extract quotes, dates, numbers from long documents for the editor to verify
+- Suggest headline options (editor picks / rewrites)
+- Draft a first pass that the editor then rewrites in her voice
+- Copy-edit for typos, awkward phrasing, and consistency
+- Parse dense filings (10-K, S-1, earnings transcripts) into structured facts
+
+**What AI is NOT allowed to do:**
+- Publish an "Angle" or "Take" that the editor did not personally endorse — opinion is human, always
+- Cite a source the editor has not opened and read
+- Generate numbers, quotes, benchmarks, or dates that are not lifted from a verified primary source
+- Ship a paragraph in the editor's byline that the editor has not rewritten
+
+**Every issue's `⚠️ Sources & method` footer must include an AI-use line.** Default language (adjust only if the workflow that week was materially different):
+
+> **How this issue was made:** All stories, angles, and takes were picked and written by Kiara. AI tools were used to sweep the weekly source pool, extract facts from long documents, and copy-edit the final draft. Every primary source was read by a human before it was cited.
+
+**Escalated disclosure — required when any of the following happened that week:**
+- AI drafted a full paragraph that made it into the final issue with less than ~50% rewrite
+- AI was used to summarize a source the editor did not read end-to-end
+- The Chinese-source exception was invoked (add a translation-flag line as specified in the exception section)
+
+Escalated language example:
+
+> **How this issue was made:** Story picks, angles, and takes by Kiara. This week I leaned harder than usual on AI to parse [specific document, e.g. Anthropic's S-1]; the section summarizing that filing was AI-drafted and then rewritten. Everything cited was verified against the primary source.
+
+**Principle:** over-disclose rather than under-disclose. A one-line honest note builds more trust than a corporate policy page.
+
 ## Workflow — adding a new issue
 
 ```bash
