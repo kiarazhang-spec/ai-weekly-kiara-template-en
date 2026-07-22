@@ -14,7 +14,9 @@ This is **Kiara Weekly · The AI Signal Sheet** — a static, zero-backend archi
 
 ## Editorial premise (read this before writing)
 
-This newsletter is written in English **from English primary sources**. Do not translate from a Chinese draft. Do not summarize a Chinese aggregator's take on a Western event. Every claim must be traceable to an English-language primary source read directly — no translation loss, no double-hop attribution.
+This newsletter is written in English **from English primary sources by default**. Do not translate from a Chinese draft. Do not summarize a Chinese aggregator's take on a Western event. Every claim must be traceable to an English-language primary source read directly — no translation loss, no double-hop attribution.
+
+**One deliberate exception:** for China-native frontier models (Moonshot / Kimi, DeepSeek, Qwen, Zhipu, ERNIE, Hunyuan, MiniMax, 01.AI, Doubao, StepFun, etc.) where the first-hand source is genuinely Chinese-only, Chinese sources are allowed with a flagged translation. See the "🇨🇳 Exception" section under Source hierarchy below for the exact protocol.
 
 **Audience:** Silicon Valley PMs, product marketers, investors, and researchers who already read Stratechery, The Information, Latent Space, and Semianalysis. They do not need "what is a transformer" explanations. They do need a synthesized weekly signal filter.
 
@@ -41,7 +43,7 @@ This newsletter is written in English **from English primary sources**. Do not t
 1. **Never hand-edit `posts/manifest.json`.** It is recomputed on every push by `.github/workflows/deploy.yml`. Manual edits will be overwritten. To change the homepage listing, rename or move the corresponding HTML file in `posts/`.
 2. **Never invent source URLs.** Every link in a post must be a real, clickable, verified URL pointing to the original article. If you cannot find a real link for a claim, drop the claim. No exceptions.
 3. **Never fabricate facts, quotes, benchmarks, funding amounts, or dates.** If uncertain, search for the primary source. If still uncertain, omit.
-4. **Never translate from Chinese sources into English claims.** If a story only exists in Chinese-language reporting, treat it as out-of-scope for this English edition — it belongs on the Chinese sister site instead. Optional exception: cite an English-language wire (Reuters, Bloomberg, FT) that already covered the same story.
+4. **Chinese-source translation is only allowed for the China-native-model exception** (see the section below). For all other stories, if it only exists in Chinese-language reporting, treat it as out-of-scope for this English edition — it belongs on the Chinese sister site instead. Optional fallback: cite an English-language wire (Reuters, Bloomberg, FT) that already covered the same story.
 5. **Never put inline `style="..."` on `.meta-line`.** Styling comes from `assets/style.css` only.
 6. **Filename convention is fixed:** `posts/YYYY-MM-DD.html` where the date is the Monday (Pacific Time) that opens the covered week.
 7. **No JS framework, no build step, no backend.** Plain HTML/CSS. This constraint is the point.
@@ -72,10 +74,27 @@ Editorially strong Western outlets covering AI substantively:
 Aggregators, translated reports, secondary coverage. Do **not** use as the sole source for any claim. Acceptable only as supplementary context alongside an S- or A-tier link.
 
 ### Explicitly out of scope for this edition
-- Chinese-language media (机器之心, 量子位, 36Kr, 财联社, 腾讯科技, 新浪财经, etc.) — belongs on the Chinese sister site.
+- Chinese-language media (机器之心, 量子位, 36Kr, 财联社, 腾讯科技, 新浪财经, etc.) as **primary sources for Western stories** — belongs on the Chinese sister site.
 - Machine-translated Chinese blog posts republished on English aggregators.
 - LinkedIn posts, unless from a verified executive account and corroborated by an S/A source.
 - X/Twitter threads, unless (a) from a verified official account or (b) corroborated by an S/A source within 48 hours.
+
+### 🇨🇳 Exception: China-native-model coverage
+
+For **China-origin frontier models and their makers** — Moonshot / Kimi, DeepSeek, Alibaba Qwen, Zhipu / GLM, Baidu ERNIE, Tencent Hunyuan, MiniMax, 01.AI, ByteDance Doubao, StepFun, and comparable labs — first-hand information is almost always in Chinese first (WeChat official accounts, 官网, Chinese X/Weibo, 机器之心 / 量子位 exclusives). Cutting these sources loses real signal.
+
+**Rule for this bucket:**
+1. **You may cite Chinese-language sources directly**, including S-tier Chinese primaries: company WeChat 公众号 posts, 官网 announcements, Chinese-language technical reports, and reputable Chinese AI trade press (机器之心, 量子位, InfoQ 中国).
+2. **You must attempt an English mirror first.** If Reuters / Bloomberg / FT / The Information / TechCrunch has already covered the same story, cite the English source as the primary link and the Chinese source as corroborating context.
+3. **When no English mirror exists yet**, cite the Chinese primary directly, and translate the specific claim into English yourself. Do not machine-translate whole articles — extract the claim, verify context, write it in native English.
+4. **Always flag the translation** with an inline marker so readers know the source language:
+   - Format: `[Source: <outlet name>, in Chinese — translated by editor]`
+   - Example: `Moonshot's WeChat post announcing Kimi K3's 2M-token context window [Moonshot 官方公众号, in Chinese — translated by editor].`
+5. **Never quote a translated passage verbatim as if it were the original wording.** Paraphrase the fact, not the sentence. Direct quotes only from an English-language source.
+6. **Sanity-check via a second source** (English or Chinese) before publishing any benchmark claim, funding number, or launch date from a Chinese primary — Chinese tech PR often front-loads optimistic framings.
+7. **In the ⚠️ Sources & method footer**, list which items used the Chinese-source exception. Transparency > convenience.
+
+Applying-the-rule test: "Would a Silicon Valley reader who reads no Chinese trust this claim after clicking the link?" If yes (because the English mirror exists, or the translation is careful and flagged), publish. If no, hold the story until a Western outlet covers it.
 
 ## Content structure (8 sections per issue)
 
@@ -159,7 +178,7 @@ To re-theme, change `--green` only. Do not add secondary accent colors.
 
 - Editing `manifest.json` manually → overwritten by Actions, causes merge conflicts.
 - Using aggregator or translated sources as the only citation → violates source hierarchy.
-- Direct-translating Chinese sister-site content into English → destroys the editorial premise. Rewrite from English primaries.
+- Direct-translating Chinese sister-site content into English → destroys the editorial premise. Rewrite from English primaries (or, for China-native models, follow the flagged-translation protocol).
 - Inventing benchmark numbers or funding figures without a real source → hallucinations.
 - Pushing without `git pull --rebase` after Actions bot commit → push rejected.
 - Adding emoji to commit messages or filenames → keeps things machine-parseable.
