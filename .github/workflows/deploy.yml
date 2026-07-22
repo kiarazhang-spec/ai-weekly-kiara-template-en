@@ -107,8 +107,8 @@ jobs:
 
           const out = {
             site: existing.site || {
-              title: 'Kiara Weekly · The AI Signal Sheet',
-              subtitle: 'Published Mondays, 8am Pacific',
+              title: 'The AI Signal Sheet · Kiara Template',
+              subtitle: 'Fork this template and run your own AI weekly',
             },
             posts,
           };

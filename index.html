@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kiara Weekly · The AI Signal Sheet</title>
-<meta name="description" content="A weekly note from a PM in Silicon Valley on what actually moved in AI — models, products, deals, infra. For people who ship AI features and don't have time to read everything.">
+<title>The AI Signal Sheet · Kiara's template + worked example</title>
+<meta name="description" content="A template for running your own weekly AI signal-sheet. Built by Kiara Zhang, a PM in Silicon Valley. Comes with one fully worked example issue (week of July 6, 2026), a full editorial rulebook, and a zero-cost GitHub Pages deploy. Fork it and make it yours.">
 <link rel="stylesheet" href="assets/style.css">
 <style>
   /* Homepage-specific: minimal archive index */
@@ -107,19 +107,19 @@
 
   <nav class="site-nav">
     <a href="about.html">About</a>
-    <a href="https://github.com/kiarazhang-spec/kiara-weekly-ai-en" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://github.com/kiarazhang-spec/ai-weekly-kiara-template-en" target="_blank" rel="noopener">GitHub</a>
   </nav>
 
   <header class="masthead">
-    <div class="masthead-kicker">A WEEKLY NOTE FROM SILICON VALLEY</div>
-    <h1 class="masthead-title">Kiara Weekly · The AI Signal Sheet</h1>
+    <div class="masthead-kicker">A TEMPLATE FROM SILICON VALLEY · BUILT BY KIARA</div>
+    <h1 class="masthead-title">The AI Signal Sheet</h1>
     <div class="masthead-meta">
-      Hi, I'm Kiara. I'm a PM in the Bay Area, and every week I read a lot about AI so you don't have to. Every Monday morning I send out what actually mattered — the launches, the deals, the technical shifts — with a note on what I think it means for people building products. If you ship AI features (or want to), this is for you.
+      A template for running your own weekly AI signal-sheet — analytical, English-native, primary-source first. Includes one fully worked example issue, a complete editorial rulebook, and a zero-cost GitHub Pages deploy. Built by <a href="about.html" style="color:inherit;border-bottom:1px solid var(--green);">Kiara Zhang</a>, a PM in the Bay Area. Fork it and make it yours — <a href="https://github.com/kiarazhang-spec/ai-weekly-kiara-template-en" target="_blank" rel="noopener" style="color:inherit;border-bottom:1px solid var(--green);">view on GitHub →</a>
     </div>
   </header>
 
   <div class="archive-header">
-    <span class="archive-header-label">Archive</span>
+    <span class="archive-header-label">Worked example</span>
     <span class="archive-header-count" id="toc-count"></span>
   </div>
   <ul class="toc-list" id="toc-list">
@@ -127,7 +127,7 @@
   </ul>
 
   <footer class="footer">
-    Kiara Weekly · <a href="about.html" style="color:inherit;">About</a> · <a href="https://github.com/kiarazhang-spec/kiara-weekly-ai-en" target="_blank" rel="noopener" style="color:inherit;">GitHub</a>
+    AI Signal Sheet template · <a href="about.html" style="color:inherit;">About</a> · <a href="https://github.com/kiarazhang-spec/ai-weekly-kiara-template-en" target="_blank" rel="noopener" style="color:inherit;">GitHub</a>
   </footer>
 
 </div>
@@ -148,7 +148,7 @@
 
     let posts = (data.posts || []).slice();
     if (posts.length === 0) {
-      tocEl.innerHTML = '<li class="toc-empty">No issues published yet — check back soon.</li>';
+      tocEl.innerHTML = '<li class="toc-empty">No example issue found — check posts/manifest.json.</li>';
       return;
     }
 
@@ -158,7 +158,7 @@
       return db.localeCompare(da);
     });
 
-    if (countEl) countEl.textContent = `${posts.length} issue${posts.length === 1 ? '' : 's'}`;
+    if (countEl) countEl.textContent = posts.length === 1 ? '1 example issue' : `${posts.length} issues`;
 
     tocEl.innerHTML = posts.map(renderRow).join('');
   } catch (err) {

@@ -5,12 +5,12 @@
 
 ## Project overview
 
-This is **Kiara Weekly · The AI Signal Sheet** — a static, zero-backend archive of a weekly AI industry newsletter, written natively in English for a Silicon Valley / Western product-and-research audience. Hosted on GitHub Pages and auto-deployed via GitHub Actions.
+This is the **AI Signal Sheet template** — a static, zero-backend scaffold plus one worked example issue, written natively in English for a Silicon Valley / Western product-and-research audience. Built by Kiara Zhang. Hosted on GitHub Pages and auto-deployed via GitHub Actions. Fork it and run your own weekly.
 
 - **Stack:** plain HTML + CSS, no JS framework, no build step.
 - **Hosting:** GitHub Pages (branch: `main`, deploy via Actions).
-- **Live site:** https://kiarazhang-spec.github.io/kiara-weekly-ai-en/ (once Pages is enabled).
-- **Sister site (Chinese):** https://kiarazhang-spec.github.io/kiara-weekly-ai/ — do **not** mirror or cross-translate content.
+- **Live site:** https://kiarazhang-spec.github.io/ai-weekly-kiara-template-en/ (once Pages is enabled).
+- **Sister repo (Chinese newsletter, actively published):** https://kiarazhang-spec.github.io/kiara-weekly-ai/ — do **not** mirror or cross-translate content.
 
 ## Editorial premise (read this before writing)
 

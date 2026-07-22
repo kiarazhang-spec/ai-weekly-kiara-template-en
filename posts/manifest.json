@@ -1,15 +1,15 @@
 {
   "site": {
-    "title": "The AI Signal Sheet",
-    "subtitle": "A weekly note from Silicon Valley on what actually moved in AI",
+    "title": "The AI Signal Sheet · Kiara Template",
+    "subtitle": "Fork this template and run your own AI weekly",
     "author": "Kiara Zhang"
   },
   "posts": [
     {
       "slug": "2026-07-06",
       "file": "posts/2026-07-06.html",
-      "title": "The AI Signal Sheet · Week of July 6, 2026",
-      "period_label": "",
+      "title": "Worked example · Week of July 6, 2026",
+      "period_label": "EXAMPLE",
       "date_start": "2026-07-06",
       "date_end": "2026-07-12",
       "summary": "OpenAI ships GPT-5.6 in three tiers and ChatGPT Work in a single day, packaging the enterprise agent into a paid SKU. Anthropic publishes GRAM, routing dual-use knowledge into removable weight modules. Microsoft's in-house MAI displaces OpenAI and Anthropic across Excel and Outlook, with Suleyman calling for the eventual elimination of that spend. Meta prices Muse Spark 1.1 at 17–28% of frontier list — its first paid flagship. Apple sues OpenAI and io Products over hardware trade secrets."
